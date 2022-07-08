@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaração Escolar</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .dados {
+
+            padding: 20px;
+
+        }
+
+        .print {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 100px;
+            display: none;
+            font-size: 1.5em;
+            text-justify: auto;
+
+        }
+
+        h3 {
+            margin-top: 15%;
+            text-align: center;
+        }
+
+
+
+        p {
+
+            text-align: justify;
+            text-indent: 60px;
+        }
+
+        .datas {
+            text-align: right;
+        }
+
+        .assinatura {
+            text-align: center;
+
+        }
+
+        hr {
+
+            margin-inline-start: 25%;
+        }
+
+        @media print {
+            .print {
+                display: block;
+
+            }
+
+            .dados {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dados">
+        <b>SISTEMA PARA EMISSÃO DE DECLARAÇÃO ESCOLAR</b><br><br>
+        Nome do Aluno: <input type="text" id="aluno"><br>
+        Nome da mãe:<input type="text" id="mae"><br>
+        Nome do pai:<input type="text" id="pai"><br>
+        Ano Letivo:<input type="text" id="anoletivo"><br>
+        Série:<label for="serie"></label>
+        <select id="serie">
+            <option selected disabled value="">Selecione</option>
+            <option>1ª SÉRIE</option>
+            <option>2ª SÉRIE</option>
+            <option>3ª SÉRIE</option>
+            <option>4ª SÉRIE</option>
+            <option>5ª SÉRIE</option>
+            <option>6ª SÉRIE</option>
+            <option>7ª SÉRIE</option>
+            <option>8ª SÉRIE</option>
+            <option>9ª SÉRIE</option>
+        </select><br>
+        Ensino:<label for="ensino"></label>
+        <select id="ensino">
+            <option selected disabled value="">Selecione</option>
+            <option>ENSINO FUNDAMENTAL</option>
+        </select><br>
+        Turno:<label for="turno"></label>
+        <select id="turno">
+            <option selected disabled value="">Selecione</option>
+            <option>MANHÃ</option>
+            <option>TARDE</option>
+        </select><br>
+        Cidade-Estado:<label for="cidade"></label>
+        <select id="cidade">
+            <option selected disabled value="">Selecione</option>
+            <option>Macapá-AP</option>
+            <option>Laranjal do Jari-AP</option>
+            <option>Calçoene-AP</option>
+        </select><br>
+        Data de Hoje: <label for="datahoje"></label>
+        <select id="datahoje">
+            <option selected disabled value="">Selecione</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+            <option>21</option>
+            <option>22</option>
+            <option>23</option>
+            <option>24</option>
+            <option>25</option>
+            <option>26</option>
+            <option>27</option>
+            <option>28</option>
+            <option>29</option>
+            <option>30</option>
+            <option>31</option>
+
+        </select><br>
+        Mês: <label for="meshoje"></label>
+        <select id="meshoje">
+            <option selected disabled value="">Selecione</option>
+            <option>Janeiro</option>
+            <option>Fevereiro</option>
+            <option>Março</option>
+            <option>Abril</option>
+            <option>Maio</option>
+            <option>Junho</option>
+            <option>Julho</option>
+            <option>Agosto</option>
+            <option>Setembro</option>
+            <option>Outubro</option>
+            <option>Novembro</option>
+            <option>Dezembro</option>
+        </select><br>
+        Ano Atual: <label for="anoatual"></label>
+        <select id="anoatual">
+            <option>2022</option>
+        </select><br><br>
+        <button onClick="gerarDeclaraçao()">Gerar Declaração</button>
+
+
+
+    </div>
+    <div class="print">
+        <h3>DECLARAÇÃO ESCOLAR</h3><br><br><br>
+        <p> Declaro para os devidos fins que <span id="nome_aluno"></span>, filho(a) de <span id="nome_mae"></span> e
+            <span id="nome_pai"></span>, aluno(a) regularmente matriculado(a) neste estabelecimento em <span
+                id="ano_letivo"></span>, cursando a <span id="serie_atual"></span> do <span id="ensino_atual"></span>,
+            turno <span id="periodo_atual"></span>.
+        </p> <br>
+        Por ser esta a expressão da verdade, firmo o presente documento.<br><br><br><br>
+        <div class="datas">
+            <span id="cidade_hoje"></span>, <span id="data_hoje"></span> de <span id="mes_hoje"></span> de <span
+                id="ano_atual"></span>.
+        </div><br><br><br><br>
+        <hr width="50%" color="black"><br>
+        <div class="assinatura">Secretária Escolar</div>
+
+
+    </div>
+    <script>
+        function gerarDeclaraçao() {
+            document.getElementById('nome_aluno').innerHTML = document.getElementById('aluno').value;
+            document.getElementById('nome_mae').innerHTML = document.getElementById('mae').value;
+            document.getElementById('nome_pai').innerHTML = document.getElementById('pai').value;
+            document.getElementById('ano_letivo').innerHTML = document.getElementById('anoletivo').value;
+            document.getElementById('serie_atual').innerHTML = document.getElementById('serie').value;
+            document.getElementById('ensino_atual').innerHTML = document.getElementById('ensino').value;
+            document.getElementById('periodo_atual').innerHTML = document.getElementById('turno').value;
+            document.getElementById('cidade_hoje').innerHTML = document.getElementById('cidade').value;
+            document.getElementById('data_hoje').innerHTML = document.getElementById('datahoje').value;
+            document.getElementById('mes_hoje').innerHTML = document.getElementById('meshoje').value;
+            document.getElementById('ano_atual').innerHTML = document.getElementById('anoatual').value;
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
